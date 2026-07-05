@@ -916,6 +916,21 @@
     const db = firebase.database();
     const auth = firebase.auth();
 
+    // ================== DEFAULT SERVICES DATABASE ==================
+    const defaultServices = [
+      { id: 30447, category: 'Telegram', name: 'Auto Telegram Post View | instant | Non Drop | Future 200 Post', icon: 'fa-telegram text-blue-400', rate: 150.00, min: 100, max: 50000 },
+      { id: 4521, category: 'Telegram', name: 'Telegram Channel Members | Non Drop | High Quality', icon: 'fa-telegram text-blue-400', rate: 208.00, min: 10, max: 100000 },
+      { id: 4522, category: 'Telegram', name: 'Telegram Post Views | Super Instant & Fast', icon: 'fa-telegram text-blue-400', rate: 150.00, min: 100, max: 500000 },
+      { id: 4523, category: 'Telegram', name: 'Telegram Post Reactions | Positive Custom Mix', icon: 'fa-telegram text-blue-400', rate: 84.50, min: 50, max: 100000 },
+      { id: 4525, category: 'Instagram', name: 'Instagram Followers | 100% Real & Active', icon: 'fa-instagram text-pink-500', rate: 273.00, min: 10, max: 100000 },
+      { id: 4526, category: 'YouTube', name: 'YouTube Subscribers | Non Drop Guaranteed', icon: 'fa-youtube text-red-500', rate: 364.00, min: 10, max: 500000 },
+      { id: 4530, category: 'TikTok', name: 'TikTok Video Views | Instant Start | High Retention', icon: 'fa-tiktok text-[#25F4EE]', rate: 15.00, min: 500, max: 1000000 },
+      { id: 4531, category: 'TikTok', name: 'TikTok Real Followers | Safe Organic Growth', icon: 'fa-tiktok text-[#25F4EE]', rate: 312.00, min: 10, max: 50000 },
+      { id: 4532, category: 'TikTok', name: 'TikTok Video Likes | Stable & Super Fast', icon: 'fa-tiktok text-[#25F4EE]', rate: 195.00, min: 25, max: 200000 }
+    ];
+
+    let services = [];
+
     // ================== STATE VARIABLE PREPARATION ==================
     let walletState = {
       balance: 0.00,
@@ -929,7 +944,9 @@
       username: "johndoe",
       email: "johndoe@example.com",
       phone: "01860909272",
-      avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80"
+      avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80",
+      badgeVerified: false,
+      verified: false
     };
 
     let refEarningState = 0.00;
@@ -1021,7 +1038,8 @@
 
     // badge status
     function checkBadgeUnlockStatus() {
-      const isUnlocked = walletState.spent >= 100.00;
+      // verified if spent >= 100 BDT or manually unlocked in database by Admin Panel (Badge Issuer)
+      const isUnlocked = (walletState.spent >= 100.00) || (userDetails.badgeVerified === true) || (userDetails.verified === true);
 
       const progressText = document.getElementById('mission-progress-text');
       const progressBar = document.getElementById('mission-progress-bar');
@@ -1213,6 +1231,7 @@
               refCount: 0,
               refEarnings: 0.00,
               badgeVerified: false,
+              verified: false,
               avatar: userDetails.avatar,
               createdAt: firebase.database.ServerValue.TIMESTAMP
             };
@@ -1273,6 +1292,8 @@
             userDetails.email = data.email || "";
             userDetails.phone = data.phone || "";
             userDetails.avatar = data.avatar || userDetails.avatar;
+            userDetails.badgeVerified = data.badgeVerified || false;
+            userDetails.verified = data.verified || false;
 
             // Stats UI synchronization
             syncUserProfileElements();
@@ -1421,6 +1442,20 @@
         appScreen.classList.add('hidden');
         appScreen.classList.remove('flex');
       }
+    });
+
+    // ================== DYNAMIC SERVICES SYNCING WITH FIREBASE (Service Pricing) ==================
+    // Listens to real-time service listings in database. seeded if empty so admin panel can manipulate rates!
+    db.ref('services').on('value', (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        services = Array.isArray(data) ? data : Object.values(data);
+      } else {
+        db.ref('services').set(defaultServices);
+        services = defaultServices;
+      }
+      renderTable();
+      populateModalServices();
     });
 
     function syncUserProfileElements() {
@@ -1684,10 +1719,12 @@
       modal.classList.remove('hidden');
       if(serviceId) {
         const selectedService = services.find(s => s.id === serviceId);
-        document.getElementById('modal-category').value = selectedService.category;
-        populateModalServices();
-        document.getElementById('modal-service').value = selectedService.id;
-        updateServiceDetails();
+        if (selectedService) {
+          document.getElementById('modal-category').value = selectedService.category;
+          populateModalServices();
+          document.getElementById('modal-service').value = selectedService.id;
+          updateServiceDetails();
+        }
       } else {
         document.getElementById('modal-category').selectedIndex = 0;
         populateModalServices();
@@ -1713,7 +1750,10 @@
     }
 
     function updateServiceDetails() {
-      const srvId = parseInt(document.getElementById('modal-service').value);
+      const srvSelect = document.getElementById('modal-service');
+      if (!srvSelect || srvSelect.options.length === 0) return;
+
+      const srvId = parseInt(srvSelect.value);
       const srv = services.find(s => s.id === srvId);
       if(srv) {
         document.getElementById('modal-rate').innerText = `৳${srv.rate.toFixed(2)}`;
@@ -1725,7 +1765,10 @@
     }
 
     function calculateCost() {
-      const srvId = parseInt(document.getElementById('modal-service').value);
+      const srvSelect = document.getElementById('modal-service');
+      if (!srvSelect || srvSelect.options.length === 0) return;
+
+      const srvId = parseInt(srvSelect.value);
       const srv = services.find(s => s.id === srvId);
       
       const subtotalText = document.getElementById('modal-subtotal');
