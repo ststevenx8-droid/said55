@@ -89,7 +89,7 @@
         <p class="text-[11px] text-slate-400 font-medium">Premium Social Media SMM Dashboard</p>
       </div>
 
-      <!-- Custom Auth Tabs (Sliding pill-style navigation) -->
+      <!-- Custom Auth Tabs -->
       <div class="bg-slate-900/80 p-1 rounded-xl border border-slate-800 flex relative">
         <button id="tab-login" onclick="setAuthTab('login')" class="w-1/2 text-xs font-bold py-2.5 rounded-lg transition-all relative z-10 text-white bg-blue-600">Sign In</button>
         <button id="tab-signup" onclick="setAuthTab('signup')" class="w-1/2 text-xs font-bold py-2.5 rounded-lg transition-all relative z-10 text-slate-400 hover:text-white">Sign Up</button>
@@ -431,8 +431,10 @@
                 </div>
               </div>
 
+              <!-- ULTRA-RESPONSIVE SERVICE LIST (TABLE FOR DESKTOP / CARDS FOR MOBILE) -->
               <div class="bg-white dark:bg-[#0E1527]/95 rounded-2xl border border-slate-100 dark:border-slate-800/40 shadow-sm overflow-hidden backdrop-blur-md">
-                <div class="overflow-x-auto overflow-y-hidden">
+                <!-- Desktop Table View (Hidden on mobile) -->
+                <div class="hidden md:block overflow-x-auto overflow-y-hidden">
                   <table class="w-full text-left border-collapse">
                     <thead>
                       <tr class="bg-slate-50/50 dark:bg-slate-900/40 text-slate-400 text-[10px] uppercase font-bold border-b border-slate-100 dark:border-slate-800/40">
@@ -446,6 +448,11 @@
                     </thead>
                     <tbody id="services-table-body" class="divide-y divide-slate-100 dark:divide-slate-800/40 text-xs"></tbody>
                   </table>
+                </div>
+
+                <!-- Mobile Responsive Card View (Shown only on mobile) -->
+                <div id="services-card-container" class="block md:hidden p-4 space-y-3">
+                  <!-- Generated dynamically for clean mobile scaling -->
                 </div>
               </div>
             </div>
@@ -569,7 +576,8 @@
             <h2 class="text-xl md:text-2xl font-black tracking-tight"><i class="fa-solid fa-list-check text-blue-500"></i> Orders Logs</h2>
           </div>
           <div class="bg-white dark:bg-[#0E1527]/90 rounded-3xl border border-slate-150 dark:border-slate-800/40 shadow-sm overflow-hidden backdrop-blur-md">
-            <div class="overflow-x-auto">
+            <!-- Desktop Layout -->
+            <div class="hidden md:block overflow-x-auto">
               <table class="w-full text-left border-collapse text-xs">
                 <thead>
                   <tr class="bg-slate-50 dark:bg-slate-900/40 text-slate-400 uppercase font-bold border-b border-slate-150 dark:border-slate-800/40">
@@ -589,6 +597,11 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
+
+            <!-- Mobile Layout (Phone Friendly Cards) -->
+            <div id="orders-log-mobile-container" class="block md:hidden p-4 space-y-3">
+              <div class="py-6 text-center text-slate-400 font-medium text-xs">No order placed yet.</div>
             </div>
           </div>
         </div>
@@ -655,7 +668,7 @@
               </h3>
 
               <div id="referred-users-container" class="space-y-2.5 overflow-y-auto max-h-[220px] pr-1">
-                <!-- Initial Clean State: Starts with no mock refers -->
+                <!-- Initial Clean State -->
                 <div id="empty-referrals-row" class="py-12 text-center text-slate-400 font-medium text-xs">No referred users signed up yet.</div>
               </div>
             </div>
@@ -765,7 +778,8 @@
             <div class="p-5 border-b border-slate-150 dark:border-slate-800/40 flex items-center gap-2">
               <span class="text-xs bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400 px-3 py-1.5 rounded-full font-bold uppercase tracking-wider flex items-center gap-1.5"><i class="fa-solid fa-clock-rotate-left"></i> Recent Deposit History</span>
             </div>
-            <div class="overflow-x-auto">
+            <!-- Desktop Layout -->
+            <div class="hidden md:block overflow-x-auto">
               <table class="w-full text-left border-collapse text-xs">
                 <thead>
                   <tr class="bg-slate-50 dark:bg-slate-900/40 text-slate-400 uppercase font-bold border-b border-slate-150 dark:border-slate-800/40">
@@ -782,6 +796,11 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
+
+            <!-- Mobile Layout (Phone Friendly Cards) -->
+            <div id="deposit-logs-mobile-container" class="block md:hidden p-4 space-y-3">
+              <div class="py-6 text-center text-slate-400 font-medium text-xs">No deposit history found.</div>
             </div>
           </div>
         </div>
@@ -923,18 +942,18 @@
       { id: 4522, category: 'Telegram', name: 'Telegram Post Views | Super Instant & Fast', icon: 'fa-telegram text-blue-400', rate: 150.00, min: 100, max: 500000 },
       { id: 4523, category: 'Telegram', name: 'Telegram Post Reactions | Positive Custom Mix', icon: 'fa-telegram text-blue-400', rate: 84.50, min: 50, max: 100000 },
 
-      // Screenshot 1: Telegram Member | Cheapest (Rates + 15 BDT Added)
+      // Screenshot 1: Telegram Member | Cheapest (All Rates + 15.00 BDT)
       { id: 29720, category: 'Telegram', name: 'Telegram Member [Cheapest] | Instant Start | High Drop | NO Refill | Max 10K - Day 10k ⚡', icon: 'fa-telegram text-blue-400', rate: 19.15, min: 100, max: 10000 },
       { id: 30570, category: 'Telegram', name: 'Telegram Member [Cheapest] | Instant Start | HQ | NO Refill | High Drop | Max 100K - Day 50K ⚡', icon: 'fa-telegram text-blue-400', rate: 20.70, min: 100, max: 100000 },
       { id: 30453, category: 'Telegram', name: 'Telegram Member [Cheapest] | Instant Start | High Drop | NO Refill | Max 20K - Day 20k ⚡', icon: 'fa-telegram text-blue-400', rate: 19.26, min: 100, max: 20000 },
       { id: 29723, category: 'Telegram', name: 'Telegram Member [Cheapest] | Instant Start | High Drop | NO Refill | Max 20K - Day 20k ⚡ (v2)', icon: 'fa-telegram text-blue-400', rate: 20.25, min: 100, max: 20000 },
       { id: 27113, category: 'Telegram', name: 'Telegram Member [Cheapest] | Instant Start | High Drop | NO Refill | Max 10K - Day 10k ⚡ (v3)', icon: 'fa-telegram text-blue-400', rate: 30.59, min: 100, max: 10000 },
 
-      // Screenshot 2: Telegram Member | Best Price (Rates + 15 BDT Added)
+      // Screenshot 2: Telegram Member | Best Price (All Rates + 15.00 BDT)
       { id: 30889, category: 'Telegram', name: 'Telegram Member [Best Price] | Instant Start | HQ | Low Drop | 180D Refill ♻️ | Max 100K - Day 50k ⚡', icon: 'fa-telegram text-blue-400', rate: 71.50, min: 100, max: 100000 },
       { id: 30888, category: 'Telegram', name: 'Telegram Member [Best Price] | Instant Start | HQ | Low Drop | 365D Refill ♻️ | Max 500K - Day 50k ⚡', icon: 'fa-telegram text-blue-400', rate: 76.25, min: 100, max: 500000 },
 
-      // Screenshot 3: Telegram Members [ High Speed - No Drop ] Provider NEW (Rates + 15 BDT Added)
+      // Screenshot 3: Telegram Members [ High Speed - No Drop ] Provider NEW (All Rates + 15.00 BDT)
       { id: 32272, category: 'Telegram', name: 'Telegram Members [Max 1M] | HQ Accounts | Non Drop | Cancel Enable | 30 Days ♻️ | Instant Start | Day 100K 🚀', icon: 'fa-telegram text-blue-400', rate: 54.53, min: 100, max: 1000000 },
       { id: 32273, category: 'Telegram', name: 'Telegram Members [Max 1M] | HQ Accounts | Non Drop | Cancel Enable | 60 Days ♻️ | Instant Start | Day 100K 🚀', icon: 'fa-telegram text-blue-400', rate: 62.44, min: 100, max: 1000000 },
       { id: 32274, category: 'Telegram', name: 'Telegram Members [Max 1M] | HQ Accounts | Non Drop | Cancel Enable | 90 Days ♻️ | Instant Start | Day 100K 🚀', icon: 'fa-telegram text-blue-400', rate: 70.34, min: 100, max: 1000000 },
@@ -1099,16 +1118,22 @@
       renderLeaderboard();
     }
 
+    // Dynamic rendering of Services supporting Table layout on desktop, Card layout on mobile
     function renderTable(dataToRender = services) {
       const tbody = document.getElementById('services-table-body');
+      const cardContainer = document.getElementById('services-card-container');
+      
       tbody.innerHTML = '';
+      cardContainer.innerHTML = '';
 
       if(dataToRender.length === 0) {
         tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-400 font-medium">No services found.</td></tr>`;
+        cardContainer.innerHTML = `<div class="py-8 text-center text-slate-400 font-medium text-xs">No services found.</div>`;
         return;
       }
 
       dataToRender.forEach(srv => {
+        // Desktop Table Element
         const row = document.createElement('tr');
         row.className = 'hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-all';
         row.innerHTML = `
@@ -1129,6 +1154,27 @@
           </td>
         `;
         tbody.appendChild(row);
+
+        // Mobile Card Element
+        const card = document.createElement('div');
+        card.className = 'bg-slate-50 dark:bg-slate-900/30 p-4 rounded-xl border border-slate-100 dark:border-slate-800/40 space-y-3';
+        card.innerHTML = `
+          <div class="flex justify-between items-start">
+            <span class="text-[10px] bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 font-bold px-2 py-0.5 rounded-md">ID: #${srv.id}</span>
+            <span class="text-xs font-black text-blue-600 dark:text-blue-400">৳${srv.rate.toFixed(2)} / 1k</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <i class="fa-brands ${srv.icon} text-base mt-0.5 shrink-0"></i>
+            <h4 class="text-xs font-bold text-slate-700 dark:text-slate-200 leading-tight">${srv.name}</h4>
+          </div>
+          <div class="flex justify-between items-center text-[10px] text-slate-400 font-medium">
+            <span>Min: ${srv.min.toLocaleString()} &bull; Max: ${srv.max.toLocaleString()}</span>
+            <button onclick="openOrderModal(${srv.id})" class="bg-blue-600 text-white font-bold px-4 py-1.5 rounded-lg transition-all shadow-sm">
+              Order
+            </button>
+          </div>
+        `;
+        cardContainer.appendChild(card);
       });
     }
 
@@ -1324,10 +1370,13 @@
           appScreen.classList.add('flex');
         });
 
-        // Listen to order logs list (Real-time updates if status modified by admin)
+        // Listen to order logs list (Populating both Desktop table & Mobile layout)
         db.ref('users/' + user.uid + '/orders_log').on('value', (snapshot) => {
           const orderBody = document.getElementById('orders-log-table');
+          const mobileBody = document.getElementById('orders-log-mobile-container');
+          
           orderBody.innerHTML = '';
+          mobileBody.innerHTML = '';
           const ordersData = snapshot.val();
 
           if (!ordersData) {
@@ -1335,12 +1384,16 @@
               <tr id="empty-orders-row">
                 <td colspan="8" class="py-6 text-center text-slate-400 font-medium">No order placed yet.</td>
               </tr>`;
+            mobileBody.innerHTML = `
+              <div class="py-6 text-center text-slate-400 font-medium text-xs">No order placed yet.</div>`;
             return;
           }
 
           const sortedOrders = Object.values(ordersData).sort((a, b) => b.timestamp - a.timestamp);
           sortedOrders.forEach(order => {
             const dateStr = new Date(order.timestamp).toLocaleDateString();
+            
+            // Desktop Layout Row
             const row = document.createElement('tr');
             row.className = "hover:bg-slate-50 dark:hover:bg-slate-800/20";
             row.innerHTML = `
@@ -1362,13 +1415,42 @@
               </td>
             `;
             orderBody.appendChild(row);
+
+            // Mobile Layout Card
+            const card = document.createElement('div');
+            card.className = "bg-slate-50 dark:bg-slate-900/30 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/40 space-y-3";
+            card.innerHTML = `
+              <div class="flex justify-between items-center text-[10px] font-bold text-slate-400">
+                <span>ID: #${order.orderId}</span>
+                <span>${dateStr}</span>
+              </div>
+              <div class="space-y-1">
+                <h4 class="text-xs font-bold text-slate-700 dark:text-slate-200">${order.serviceName}</h4>
+                <p class="text-[10px] text-blue-500 truncate select-all">${order.link}</p>
+              </div>
+              <div class="flex justify-between items-center text-[11px] font-medium pt-1 border-t border-slate-100 dark:border-slate-800/40">
+                <span>Qty: ${order.quantity.toLocaleString()} &bull; <strong>৳${order.charge.toFixed(2)}</strong></span>
+                <div class="flex items-center gap-2">
+                  <span class="${order.status === 'Completed' ? 'bg-emerald-100 text-emerald-600' : order.status === 'Processing' ? 'bg-blue-100 text-blue-600' : 'bg-amber-100 text-amber-600'} px-2 py-0.5 rounded-full font-bold text-[9px]">
+                    ${order.status}
+                  </span>
+                  <button onclick="requestRefill(${order.orderId})" class="bg-slate-100 hover:bg-blue-600 dark:bg-slate-800 hover:text-white text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-md text-[9px] font-bold transition-all">
+                    Refill
+                  </button>
+                </div>
+              </div>
+            `;
+            mobileBody.appendChild(card);
           });
         });
 
         // Listen to deposit logs list
         db.ref('users/' + user.uid + '/deposits').on('value', (snapshot) => {
           const logBody = document.getElementById('deposit-logs-body');
+          const mobileBody = document.getElementById('deposit-logs-mobile-container');
+          
           logBody.innerHTML = '';
+          mobileBody.innerHTML = '';
           const depositData = snapshot.val();
 
           if (!depositData) {
@@ -1376,12 +1458,16 @@
               <tr id="empty-deposits-row">
                 <td colspan="5" class="py-6 text-center text-slate-400 font-medium">No deposit history found.</td>
               </tr>`;
+            mobileBody.innerHTML = `
+              <div class="py-6 text-center text-slate-400 font-medium text-xs">No deposit history found.</div>`;
             return;
           }
 
           const sortedDeps = Object.values(depositData).sort((a, b) => b.timestamp - a.timestamp);
           sortedDeps.forEach(dep => {
             const dateStr = new Date(dep.timestamp).toLocaleDateString();
+            
+            // Desktop Layout Row
             const row = document.createElement('tr');
             row.className = "hover:bg-slate-50 dark:hover:bg-slate-800/20";
             row.innerHTML = `
@@ -1396,6 +1482,26 @@
               </td>
             `;
             logBody.appendChild(row);
+
+            // Mobile Layout Card
+            const card = document.createElement('div');
+            card.className = "bg-slate-50 dark:bg-slate-900/30 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/40 space-y-3";
+            card.innerHTML = `
+              <div class="flex justify-between items-center text-[10px] font-bold text-slate-400">
+                <span class="font-mono">${dep.txId}</span>
+                <span>${dateStr}</span>
+              </div>
+              <div class="flex justify-between items-center text-xs font-semibold text-slate-700 dark:text-slate-200">
+                <span>Sender: ${dep.senderNum}</span>
+                <span class="font-bold text-emerald-600 dark:text-emerald-400">৳${dep.amount.toFixed(2)}</span>
+              </div>
+              <div class="flex justify-end pt-1 border-t border-slate-100 dark:border-slate-800/40">
+                <span class="${dep.status === 'Approved' ? 'bg-emerald-100 text-emerald-600' : 'bg-amber-100 text-amber-600'} px-2 py-0.5 rounded-full font-bold text-[9px]">
+                  ${dep.status}
+                </span>
+              </div>
+            `;
+            mobileBody.appendChild(card);
           });
         });
 
@@ -1463,7 +1569,6 @@
     });
 
     // ================== DYNAMIC SERVICES SYNCING WITH FIREBASE (Service Pricing) ==================
-    // Listens to real-time service listings in database. seeded if empty so admin panel can manipulate rates!
     db.ref('services').on('value', (snapshot) => {
       const data = snapshot.val();
       if (data) {
@@ -1489,7 +1594,6 @@
       document.getElementById('acc-name').value = userDetails.displayName;
       document.getElementById('acc-email').value = userDetails.email;
 
-      // Click Count tracking dynamically matching referrals
       db.ref('users/' + currentUserUid + '/refCount').once('value', (s) => {
         document.getElementById('ref-count').innerText = s.val() || 0;
       });
@@ -1521,7 +1625,6 @@
           return;
         }
 
-        // Complete atomic transaction to replace database keys
         const oldUsername = userDetails.username;
         db.ref('users/' + currentUserUid).update({
           displayName: updatedName,
@@ -1570,7 +1673,7 @@
       };
 
       const updates = {};
-      updates['tickets/' + ticketId] = ticketData; // Global path for admin connect
+      updates['tickets/' + ticketId] = ticketData;
       updates['users/' + currentUserUid + '/tickets/' + ticketId] = ticketData;
 
       db.ref().update(updates).then(() => {
@@ -1604,12 +1707,12 @@
         username: userDetails.username,
         senderNum: senderNum,
         amount: amount,
-        status: "Pending", // Admin can update this status from database to trigger real-time balance calculations
+        status: "Pending",
         timestamp: firebase.database.ServerValue.TIMESTAMP
       };
 
       const updates = {};
-      updates['deposits/' + txId] = depositData; // Global directory for Admin Connect
+      updates['deposits/' + txId] = depositData;
       updates['users/' + currentUserUid + '/deposits/' + txId] = depositData;
 
       db.ref().update(updates).then(() => {
@@ -1642,11 +1745,9 @@
 
       if (!currentUserUid) return;
 
-      // Run atomic database transaction to prevent client-side desyncing
       db.ref('users/' + currentUserUid).transaction((user) => {
         if (user) {
           if (user.balance < finalCost) {
-            // Cancel transaction if balance is insufficient
             return; 
           }
           user.balance = (user.balance || 0) - finalCost;
@@ -1661,7 +1762,6 @@
         } else if (!committed) {
           showToast('Error: পর্যাপ্ত ব্যালেন্স নেই! দয়া করে ব্যালেন্স এড করুন।');
         } else {
-          // Transaction completed. Save actual log records
           const orderId = Math.floor(10000 + Math.random() * 90000);
           const orderData = {
             orderId: orderId,
@@ -1672,12 +1772,12 @@
             link: link,
             quantity: qty,
             charge: finalCost,
-            status: "Pending", // Admin changes this dynamically
+            status: "Pending",
             timestamp: firebase.database.ServerValue.TIMESTAMP
           };
 
           const updates = {};
-          updates['orders/' + orderId] = orderData; // Global path for Admin Panel Connect
+          updates['orders/' + orderId] = orderData;
           updates['users/' + currentUserUid + '/orders_log/' + orderId] = orderData;
 
           db.ref().update(updates).then(() => {
@@ -1688,7 +1788,6 @@
       });
     }
 
-    // click links tracker
     function recordReferralClick() {
       const urlParams = new URLSearchParams(window.location.search);
       const refBy = urlParams.get('ref');
