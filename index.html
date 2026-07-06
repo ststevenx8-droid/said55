@@ -922,6 +922,25 @@
       { id: 4521, category: 'Telegram', name: 'Telegram Channel Members | Non Drop | High Quality', icon: 'fa-telegram text-blue-400', rate: 208.00, min: 10, max: 100000 },
       { id: 4522, category: 'Telegram', name: 'Telegram Post Views | Super Instant & Fast', icon: 'fa-telegram text-blue-400', rate: 150.00, min: 100, max: 500000 },
       { id: 4523, category: 'Telegram', name: 'Telegram Post Reactions | Positive Custom Mix', icon: 'fa-telegram text-blue-400', rate: 84.50, min: 50, max: 100000 },
+
+      // Screenshot 1: Telegram Member | Cheapest (Rates + 15 BDT Added)
+      { id: 29720, category: 'Telegram', name: 'Telegram Member [Cheapest] | Instant Start | High Drop | NO Refill | Max 10K - Day 10k ⚡', icon: 'fa-telegram text-blue-400', rate: 19.15, min: 100, max: 10000 },
+      { id: 30570, category: 'Telegram', name: 'Telegram Member [Cheapest] | Instant Start | HQ | NO Refill | High Drop | Max 100K - Day 50K ⚡', icon: 'fa-telegram text-blue-400', rate: 20.70, min: 100, max: 100000 },
+      { id: 30453, category: 'Telegram', name: 'Telegram Member [Cheapest] | Instant Start | High Drop | NO Refill | Max 20K - Day 20k ⚡', icon: 'fa-telegram text-blue-400', rate: 19.26, min: 100, max: 20000 },
+      { id: 29723, category: 'Telegram', name: 'Telegram Member [Cheapest] | Instant Start | High Drop | NO Refill | Max 20K - Day 20k ⚡ (v2)', icon: 'fa-telegram text-blue-400', rate: 20.25, min: 100, max: 20000 },
+      { id: 27113, category: 'Telegram', name: 'Telegram Member [Cheapest] | Instant Start | High Drop | NO Refill | Max 10K - Day 10k ⚡ (v3)', icon: 'fa-telegram text-blue-400', rate: 30.59, min: 100, max: 10000 },
+
+      // Screenshot 2: Telegram Member | Best Price (Rates + 15 BDT Added)
+      { id: 30889, category: 'Telegram', name: 'Telegram Member [Best Price] | Instant Start | HQ | Low Drop | 180D Refill ♻️ | Max 100K - Day 50k ⚡', icon: 'fa-telegram text-blue-400', rate: 71.50, min: 100, max: 100000 },
+      { id: 30888, category: 'Telegram', name: 'Telegram Member [Best Price] | Instant Start | HQ | Low Drop | 365D Refill ♻️ | Max 500K - Day 50k ⚡', icon: 'fa-telegram text-blue-400', rate: 76.25, min: 100, max: 500000 },
+
+      // Screenshot 3: Telegram Members [ High Speed - No Drop ] Provider NEW (Rates + 15 BDT Added)
+      { id: 32272, category: 'Telegram', name: 'Telegram Members [Max 1M] | HQ Accounts | Non Drop | Cancel Enable | 30 Days ♻️ | Instant Start | Day 100K 🚀', icon: 'fa-telegram text-blue-400', rate: 54.53, min: 100, max: 1000000 },
+      { id: 32273, category: 'Telegram', name: 'Telegram Members [Max 1M] | HQ Accounts | Non Drop | Cancel Enable | 60 Days ♻️ | Instant Start | Day 100K 🚀', icon: 'fa-telegram text-blue-400', rate: 62.44, min: 100, max: 1000000 },
+      { id: 32274, category: 'Telegram', name: 'Telegram Members [Max 1M] | HQ Accounts | Non Drop | Cancel Enable | 90 Days ♻️ | Instant Start | Day 100K 🚀', icon: 'fa-telegram text-blue-400', rate: 70.34, min: 100, max: 1000000 },
+      { id: 32275, category: 'Telegram', name: 'Telegram Members [Max 1M] | HQ Accounts | Non Drop | Cancel Enable | 365 Days ♻️ | Instant Start | Day 100K 🚀', icon: 'fa-telegram text-blue-400', rate: 78.25, min: 100, max: 1000000 },
+
+      // Other Categories
       { id: 4525, category: 'Instagram', name: 'Instagram Followers | 100% Real & Active', icon: 'fa-instagram text-pink-500', rate: 273.00, min: 10, max: 100000 },
       { id: 4526, category: 'YouTube', name: 'YouTube Subscribers | Non Drop Guaranteed', icon: 'fa-youtube text-red-500', rate: 364.00, min: 10, max: 500000 },
       { id: 4530, category: 'TikTok', name: 'TikTok Video Views | Instant Start | High Retention', icon: 'fa-tiktok text-[#25F4EE]', rate: 15.00, min: 500, max: 1000000 },
@@ -1038,7 +1057,6 @@
 
     // badge status
     function checkBadgeUnlockStatus() {
-      // verified if spent >= 100 BDT or manually unlocked in database by Admin Panel (Badge Issuer)
       const isUnlocked = (walletState.spent >= 100.00) || (userDetails.badgeVerified === true) || (userDetails.verified === true);
 
       const progressText = document.getElementById('mission-progress-text');
